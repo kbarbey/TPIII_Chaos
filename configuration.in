@@ -1,0 +1,21 @@
+% Parametres physiques :
+tFin     = 100
+x0       = 0.5
+y0       = -4.0
+vx0	 = 0.0
+vy0	 = 0.0
+m        = 1.5
+q	 = 1e-4
+g        = 9.81
+k        = 4.5
+l0       = 1.1
+Ex	 = 1.0
+Ey	 = 0.0
+w        = 0.0
+nu       = 0.0
+c        = 0.0
+
+% Parametres numeriques :
+dt       = 0.1 % 
+output   = exemple.out
+sampling = 1
