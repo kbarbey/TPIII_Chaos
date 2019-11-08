@@ -23,7 +23,7 @@ xlabel('x [m]')
 ylabel('y [m]')
 
 figure
-plot(t,x,t,y, 'linewidth',lw)
+plot(t,x,t,y,'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('x,y [m]')
@@ -62,11 +62,11 @@ ylabel('\Delta E [J]')
 % ylabel('d [m]')
 
 % -----------Poincare plots: assumes N steps per period and sampling=N
-
+%{
 istart=100; % do not plot until istart periods
 figure
 plot(x(istart:end),vx(istart:end),'.',y(istart:end),vy(istart:end),'.')
-%axis equal
+axis equal
 xlabel('x,y [m]')
 ylabel('v_x, v_y [m/s]')
 
@@ -81,7 +81,7 @@ plot(vx(istart:end),vy(istart:end),'.')
 axis equal
 xlabel('v_x [m/s]')
 ylabel('v_y [m/s]')
-
+%}
 
 
 

@@ -39,7 +39,7 @@ private:
       if (L > 0.00000001) {
           double theta = acos(x/L);
           if (abs(asin(x/L)-theta) < 0.001)    {   return theta+M_PI/2;   }
-          else  {   return -(theta+M_PI/2);  }
+          else  {   return -theta+M_PI/2;  }
       }
       else  {
           return 0.0;
@@ -55,7 +55,6 @@ private:
   }
   
   double ay(double t, double y) { // TODO: calculer l'acceleration selon y
-      cout << -omega02*y - omega02*l0*cos(theta(x,y))+q/m*Ey*cos(w*t) - g << endl;
     return -omega02*y - omega02*l0*cos(theta(x,y))+q/m*Ey*cos(w*t) - g; //-gamma*vy
   }
   
