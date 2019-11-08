@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <vector>
 #include <iomanip>
 #include "ConfigFile.tpp" // Fichier .tpp car inclut un template
 
@@ -36,9 +37,9 @@ private:
     
   double theta(double x,double y) {
       double L = computeL();
-      if (L > 0.00000001) {
+      if (L > 0.000001) {
           double theta = acos(x/L);
-          if (abs(asin(x/L)-theta) < 0.001)    {   return theta+M_PI/2;   }
+          if (abs(asin(y/L)-theta) < 0.001)    {   return theta+M_PI/2;   }
           else  {   return -theta+M_PI/2;  }
       }
       else  {
@@ -50,24 +51,57 @@ private:
    return sqrt(x*x + y*y);
   }
     
-  double ax(double t, double x){ // TODO: calculer l'acceleration selon x
-    return -omega02*x  + omega02*l0*sin(theta(x,y))+q/m*Ex*cos(w*t); //-gamma*vx
+  double ax(double t, double x1, double x2)   { // replace default arguments in ax
+      return ax(t,x1,x2,vx,vy);
+  }
+    
+  double ax(double t, double x1, double x2, double v1, double v2){ // TODO: calculer l'acceleration selon x
+    vector<double> F_C(Couple(t));
+      return -omega02*x1  + omega02*l0*sin(theta(x1,x2))+q/m*Ex*cos(w*t) + F_C[0]/m -gamma*v1;
+  }
+    
+  double ay(double t, double x1, double x2)   { // replace default arguments in ay
+        return ay(t,x1,x2,vx,vy);
+  }
+  double ay(double t, double x1, double x2, double v1, double v2) { // TODO: calculer l'acceleration selon y
+    vector<double> F_C(Couple(t));
+      cout << "f1 " << -omega02*x2;
+      cout << "f2 " << - omega02*l0*cos(theta(x1,x2));
+      cout << "f3 " << q/m*Ey*cos(w*t);
+      cout << "f4 " << - g;
+      cout << "f5 " << F_C[1]/m;
+      cout << "f6 " << -gamma*v2 << endl;
+    return -omega02*x2 - omega02*l0*cos(theta(x1,x2)) + q/m*Ey*cos(w*t) - g + F_C[1]/m -gamma*v2;
   }
   
-  double ay(double t, double y) { // TODO: calculer l'acceleration selon y
-    return -omega02*y - omega02*l0*cos(theta(x,y))+q/m*Ey*cos(w*t) - g; //-gamma*vy
-  }
-  
-  
+    vector<double> Couple(double t)   {
+        vector<double> F;
+        double f(0.0);
+        if (computeL() > 0.00001)   {
+            f = c/computeL()*sin(w*t);
+        }
+        vector<double> e = e_theta();
+        F.push_back(f*e[0]);
+        F.push_back(f*e[1]);
+        return F;
+    }
+    
+    vector<double> e_theta()  {
+        vector<double> e;
+        e.push_back(cos(theta(x,y)));
+        e.push_back(sin(theta(x,y)));
+        return e;
+    }
+    
   void step()   { // TODO: programmer un pas du schema de Verlet
 	double tx(x),ty(y),tvx(vx),tvy(vy);
-    x+=dt*tvx+(dt*dt)*0.5*(ax(t,tx)-gamma*tvx);
-    y+=dt*tvy+(dt*dt)*0.5*(ay(t,ty)-gamma*tvy);
+    x+=dt*tvx+(dt*dt)*0.5*ax(t,tx,ty);
+    y+=dt*tvy+(dt*dt)*0.5*ay(t,tx,ty);
     double t2vx(tvx), t2vy(tvy);
-    t2vx+=0.5*dt*(ax(t,tx)-gamma*tvx);
-    t2vy+=0.5*dt*(ay(t,ty)-gamma*tvy);
-    vx+=0.5*dt*(ax(t,tx)+ax(t+dt,x))+dt*(-gamma*t2vx);
-    vy+=0.5*dt*(ay(t,ty)+ay(t+dt,y))+dt*(-gamma*t2vy);
+    t2vx+=0.5*dt*ax(t,tx,ty);
+    t2vy+=0.5*dt*ay(t,tx,ty);
+    vx+=0.5*dt*(ax(t,tx,ty,t2vx,t2vy)+ax(t+dt,x,y,t2vx,t2vy));
+    vy+=0.5*dt*(ay(t,tx,ty,t2vx,t2vy)+ay(t+dt,x,y,t2vx,t2vy));
   }
   
   
@@ -107,8 +141,8 @@ public:
     nu       = configFile.get<double>("nu");
     c        = configFile.get<double>("c");
     sampling = configFile.get<int>("sampling");
-    omega02=k/m;
-    gamma=nu/m;
+    omega02  = k/m;
+    gamma    = nu/m;
     // Ouverture du fichier de sortie
     outputFile = new ofstream(configFile.get<string>("output").c_str());
     outputFile->precision(15); 
