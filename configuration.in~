@@ -1,5 +1,5 @@
 % Parametres physiques :
-tFin     = 20.9680
+tFin     = 100
 x0       = 1e-6
 y0       = -4.37
 vx0      = 0.0
@@ -16,7 +16,7 @@ nu       = 0.0
 c        = 0.0
 
 % Parametres numeriques :
-nsteps   = 500
-dt       = 0.01 
+nsteps   = 0
+dt       = 0.001 
 output   = Verlet.out
 sampling = 1

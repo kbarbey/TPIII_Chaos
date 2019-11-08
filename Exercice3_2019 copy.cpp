@@ -10,7 +10,6 @@ class Exercice3{
 
 private:
   double t,dt,tFin;
-  int nsteps;
   double x,y,vx,vy;
   double m,g,k,l0,q; 
   double w,nu,c;  // frequence d'excitation; amortissement; couple (facultatif)
@@ -34,16 +33,10 @@ private:
     }
   };
     
-  double theta(double x,double y) {
-      double L = computeL();
-      if (L > 0.00000001) {
-          double theta = acos(x/L);
-          if (abs(asin(x/L)-theta) < 0.001)    {   return theta+M_PI/2;   }
-          else  {   return -(theta+M_PI/2);  }
-      }
-      else  {
-          return 0.0;
-      }
+  double theta(x,y) {
+      theta = acos(x/computeL());
+      if (abs(asin(x/computeL()-theta1) < 0.001)    {   return theta-M_PI/2;   }
+      else  {   return -theta-M_PI/2;  }
   }
     
   double computeL(){ // longueur du pendule
@@ -51,16 +44,16 @@ private:
   }
     
   double ax(double t, double x){ // TODO: calculer l'acceleration selon x
-    return -omega02*x  + omega02*l0*sin(theta(x,y))+q/m*Ex*cos(w*t); //-gamma*vx
+    return -omega02*x  + omega02*l0*sin(theta(x,y)))+q/m*Ex*cos(w*t); //-gamma*vx
   }
   
   double ay(double t, double y) { // TODO: calculer l'acceleration selon y
-      cout << -omega02*y - omega02*l0*cos(theta(x,y))+q/m*Ey*cos(w*t) - g << endl;
     return -omega02*y - omega02*l0*cos(theta(x,y))+q/m*Ey*cos(w*t) - g; //-gamma*vy
   }
   
   
-  void step()   { // TODO: programmer un pas du schema de Verlet
+  void step(){ // TODO: programmer un pas du schema de Verlet
+	  
 	double tx(x),ty(y),tvx(vx),tvy(vy);
     x+=dt*tvx+(dt*dt)*0.5*(ax(t,tx)-gamma*tvx);
     y+=dt*tvy+(dt*dt)*0.5*(ay(t,ty)-gamma*tvy);
@@ -69,6 +62,7 @@ private:
     t2vy+=0.5*dt*(ay(t,ty)-gamma*tvy);
     vx+=0.5*dt*(ax(t,tx)+ax(t+dt,x))+dt*(-gamma*t2vx);
     vy+=0.5*dt*(ay(t,ty)+ay(t+dt,y))+dt*(-gamma*t2vy);
+    t+=dt;
   }
   
   
@@ -86,13 +80,7 @@ public:
       configFile.process(argv[i]);
   
     tFin     = configFile.get<double>("tFin");
-    nsteps   = configFile.get<int>("nsteps");
-    if  (nsteps > 0)    {
-        dt = tFin/nsteps;
-    }
-    else    {
-        dt       = configFile.get<double>("dt");
-    }
+    dt       = configFile.get<double>("dt");
     x        = configFile.get<double>("x0");
     y        = configFile.get<double>("y0");
     vx       = configFile.get<double>("vx0");

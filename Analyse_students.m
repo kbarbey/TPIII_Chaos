@@ -1,3 +1,6 @@
+system('g++ -o Exercice3 Exercice3_2019.cpp')
+system('./Exercice3 configuration.in')
+
 output = load('Verlet.out');
 
 t = output(:,1);
