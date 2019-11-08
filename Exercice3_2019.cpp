@@ -14,15 +14,17 @@ private:
   double m,g,k,l0,q; 
   double w,nu,c;  // frequence d'excitation; amortissement; couple (facultatif)
   double Ex, Ey;  // champ electrique oscillatoire
+  double omega02=0.0; // pulsation
+  double gamma=0.0; //coefficient d'amortissement sur masse
   int sampling;   // output tous les sampling pas de temps
   int last;
   ofstream *outputFile;
 
   void printOut(bool force){
     if((!force && last>=sampling) || (force && last!=1)){
-      double ekin = 0.; // TODO: A completer
-      double epot = 0.; // TODO: A completer
-      double Pnc = 0.;  // TODO: A completer
+      double ekin = 0.5*(vx*vx+vy*vy); // TODO: A completer
+      double epot = m*g*y+0.5*(computeL(t)-l0)*(computeL(t)-l0)-q*(Ex*x+Ey*y); // TODO: A completer
+      double Pnc = -nu*(vx*vx+vy*vy);  // TODO: A completer
       *outputFile << t << " " << x << " " << y << " " << vx << " " << vy << " "
                   << ekin << " " << epot << " " << Pnc << endl;
       last=1;
@@ -36,20 +38,26 @@ private:
    return sqrt(x*x + y*y);
   }
     
-  double ax(double t){ // TODO: calculer l'acceleration selon x
-    return 0.0;
+  double ax(double t, double x){ // TODO: calculer l'acceleration selon x
+    return -omega02*x  + omega02*l0*sin(atan(x/y))+q/m*Ex*cos(w*t); //-gamma*vx
   }
   
-  double ay(double t){ // TODO: calculer l'acceleration selon y
-    return 0.0;
+  double ay(double t, double y){ // TODO: calculer l'acceleration selon y
+    return -omega02*y - omega02*l0*cos(atan(x/y))+q/m*Ey*cos(w*t) - g; //-gamma*vy
   }
+  
   
   void step(){ // TODO: programmer un pas du schema de Verlet
-
-    x+=0.0;
-    y+=0.0;
-    vx+=0.0;
-    vy+=0.0;
+	  
+	double tx(x),ty(y),tvx(vx),tvy(vy);
+    x+=dt*tvx*+(dt*dt)*0.5*(ax(t,tx)-gamma*tvx);
+    y+=dt*tvy*+(dt*dt)*0.5*(ay(t,ty)-gamma*tvy);
+    double t2vx(tvx), t2vy(tvy);
+    t2vx+=0.5*dt*(ax(t,tx)-gamma*tvx);
+    t2vy+=0.5*dt*(ay(t,ty)-gamma*tvy);
+    vx+=0.5*dt*(ax(t,tx)+ax(t+dt,x))+dt*(-gamma*t2vx);
+    vy+=0.5*dt*(ay(t,ty)+ay(t+dt,y))+dt*(-gamma*t2vy);
+    t+=dt;
   }
   
   
@@ -83,7 +91,8 @@ public:
     nu       = configFile.get<double>("nu");
     c        = configFile.get<double>("c");
     sampling = configFile.get<int>("sampling");
-    
+    omega02=k/m;
+    gamma=nu/m;
     // Ouverture du fichier de sortie
     outputFile = new ofstream(configFile.get<string>("output").c_str());
     outputFile->precision(15); 

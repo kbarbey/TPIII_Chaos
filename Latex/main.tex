@@ -1,0 +1,55 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[a4paper,top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{nicefrac} 
+\usepackage{amssymb}
+\usepackage{subfiles}
+\usepackage{emptypage}
+\usepackage{xspace}
+\usepackage{parskip}
+\usepackage{mathtools}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{float}
+\usepackage[figuresright]{rotating} %sidewaysfigure
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{booktabs} 
+\usepackage{enumitem}
+\usepackage{multicol}
+
+\begin{document}
+\begin{titlepage}\centering
+\vspace*{\fill}
+\LARGE Système pendule-ressort \\
+\vspace*{3mm}
+\small Baptiste Claudon - Kent Barbey \\
+\vspace*{3mm}
+23 November 2019
+\vspace*{\fill}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\input{1Intro.tex}
+\newpage
+\input{2Calculsanalytiques.tex}
+\newpage
+\input{3Cpp.tex}
+\newpage
+\input{4Sims.tex}
+\newpage
+\input{5Conclusion.tex}
+\input{Annex.tex}
+\end{document}

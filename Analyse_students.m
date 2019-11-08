@@ -1,4 +1,4 @@
-output = load('nomdufichierdesortie.out');
+output = load('Verlet.out');
 
 t = output(:,1);
 x = output(:,2);

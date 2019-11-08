@@ -1,5 +1,5 @@
 % Parametres physiques :
-tFin     = 100
+tFin     = 1,0
 x0       = 0.5
 y0       = -4.0
 vx0	 = 0.0
@@ -9,13 +9,13 @@ q	 = 1e-4
 g        = 9.81
 k        = 4.5
 l0       = 1.1
-Ex	 = 1.0
+Ex	 = 0.0
 Ey	 = 0.0
 w        = 0.0
 nu       = 0.0
 c        = 0.0
 
 % Parametres numeriques :
-dt       = 0.1 % 
-output   = exemple.out
+dt       = 0.01 % 
+output   = Verlet.out
 sampling = 1
