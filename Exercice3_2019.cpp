@@ -39,19 +39,19 @@ private:
   }
     
   double ax(double t, double x){ // TODO: calculer l'acceleration selon x
-    return -omega02*x  + omega02*l0*sin(atan(x/y))+q/m*Ex*cos(w*t); //-gamma*vx
+    return -omega02*x  + omega02*l0*sin(atan(x/(-y)))+q/m*Ex*cos(w*t); //-gamma*vx
   }
   
   double ay(double t, double y){ // TODO: calculer l'acceleration selon y
-    return -omega02*y - omega02*l0*cos(atan(x/y))+q/m*Ey*cos(w*t) - g; //-gamma*vy
+    return -omega02*y - omega02*l0*cos(atan(x/(-y)))+q/m*Ey*cos(w*t) - g; //-gamma*vy
   }
   
   
   void step(){ // TODO: programmer un pas du schema de Verlet
 	  
 	double tx(x),ty(y),tvx(vx),tvy(vy);
-    x+=dt*tvx*+(dt*dt)*0.5*(ax(t,tx)-gamma*tvx);
-    y+=dt*tvy*+(dt*dt)*0.5*(ay(t,ty)-gamma*tvy);
+    x+=dt*tvx+(dt*dt)*0.5*(ax(t,tx)-gamma*tvx);
+    y+=dt*tvy+(dt*dt)*0.5*(ay(t,ty)-gamma*tvy);
     double t2vx(tvx), t2vy(tvy);
     t2vx+=0.5*dt*(ax(t,tx)-gamma*tvx);
     t2vy+=0.5*dt*(ay(t,ty)-gamma*tvy);
