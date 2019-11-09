@@ -136,7 +136,10 @@ The numerical values for the simulations, unless otherwise stated, are $m=1.5kg$
 	\begin{equation}
 	\delta \ddot{x}(t)+\dfrac{g}{l_{eq}}\delta x=\delta \ddot{x}(t)+\omega_2^2\delta x=0
 	\end{equation}
-	where $\omega_2^2=\sqrt{\dfrac{g}{l_{eq}}}=\sqrt{\dfrac{kg}{gm+kl_0}}$ the eigenfrequency corresponding to the pendulum. \\ \\
+	where $\omega_2^2=\sqrt{\dfrac{g}{l_{eq}}}=\sqrt{\dfrac{kg}{gm+kl_0}}$ the eigenfrequency corresponding to the pendulum. The solution of the initial Cauchy problem(with initial conditions) with (8) is : 
+	\begin{equation}
+		x(t)=x_0\cos(w_2t)
+	\end{equation} 
 	
 	On the same basis, the equation for a small oscillation for $\delta y$ yields : 
 	\begin{align*}
@@ -148,7 +151,10 @@ The numerical values for the simulations, unless otherwise stated, are $m=1.5kg$
 	\begin{equation}
 	\delta \ddot{y}(t)+\omega_1^2\delta y=0
 	\end{equation}
-	With $\omega_0^2=\omega_1^2$ and therefore $\omega_1=\sqrt{\dfrac{k}{m}}$ the eigenfrequency corresponding to the spring.
+	With $\omega_0^2=\omega_1^2$ and therefore $\omega_1=\sqrt{\dfrac{k}{m}}$ 		the eigenfrequency corresponding to the spring. The solution of the initial Cauchy problem(with initial conditions) with (9) is : 
+	\begin{equation}
+		y(t)=y_1+\delta y=(y_0-y_1)\cos(\omega_1t)+y_1
+	\end{equation}
 
 
 

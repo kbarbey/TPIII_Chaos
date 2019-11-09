@@ -1,5 +1,5 @@
-system('g++ -o Exercice3 Exercice3_2019.cpp')
-system('./Exercice3 configuration.in')
+%system('g++ -o Exercice3_2019.cpp')
+%system('./configuration.in')
 
 output = load('Verlet.out');
 
@@ -21,20 +21,20 @@ set(gca,'fontsize',fs)
 axis equal
 xlabel('x [m]')
 ylabel('y [m]')
-
+%% Position en fonction du temps
 figure
 plot(t,x,t,y,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscill par ex)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('x,y [m]')
-legend('x','y')
-
+legend('x','y','Analytic solution')
+%% Vitesses
 figure
 plot(t,vx,t,vy, 'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('v_x,v_y [m/s]')
-legend('vx','vy')
+legend('vx','vy','Analytical solution')
 
 figure
 plot(t,ekin+epot -ekin(1)-epot(1), 'linewidth',lw)

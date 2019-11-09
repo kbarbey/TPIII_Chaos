@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.8)  9 NOV 2019 14:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.8)  9 NOV 2019 18:52
 entering extended mode
 **./main.tex
 (main.tex
@@ -1763,18 +1763,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
- [5]
-Underfull \hbox (badness 10000) in paragraph at lines 138--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--140
-
- []
-
-) [6] (3-CppImp.tex) [7] (4-RandS.tex) [8] (5-Conclusion.tex) [9] (appendix.tex
-)
+ [5]) [6] (3-CppImp.tex) [7] (4-RandS.tex) [8] (5-Conclusion.tex) [9]
+(appendix.tex)
 
 LaTeX Warning: Empty bibliography on input line 50.
 
@@ -1796,11 +1786,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41858 strings out of 492449
- 784909 string characters out of 3129689
+ 41864 strings out of 492449
+ 784973 string characters out of 3129689
  1409182 words of memory out of 3000000
  45466 multiletter control sequences out of 15000+200000
- 550359 words of font info for 79 fonts, out of 3000000 for 9000
+ 550473 words of font info for 81 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,12n,74p,851b,2191s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
@@ -1820,9 +1810,9 @@ lic/cm-super/sfss1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-su
 per/sfxc1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfxc1
 200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfxc1440.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfxc3583.pfb>
-Output written on main.pdf (11 pages, 319121 bytes).
+Output written on main.pdf (11 pages, 319985 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
+ 317 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
  22226 words of extra memory for PDF output out of 24883 (max. 10000000)
 
