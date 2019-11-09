@@ -1,0 +1,50 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {british}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Analytical calculations}{4}{section.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Differential motion equation}{4}{subsection.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Equilibrium}{5}{subsection.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Mechanical energy}{5}{subsection.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Non conservative forces' power}{5}{subsection.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5}Small oscillations around the stable solution of the equilibrium}{6}{subsection.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}C++ implementation}{7}{section.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}St\o rmer-Verlet scheme}{7}{subsection.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Simulation and results analysis}{8}{section.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Small oscillations around equilibrium : simple harmonic oscillator}{8}{subsection.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Resonance with the exiting force}{8}{subsection.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Large movements without damping nor excitation}{8}{subsection.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4}Large movements without damping but with excitation}{8}{subsection.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.4.1}Mechanical energy theorem}{8}{subsubsection.4.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.4.2}Poincaré maps}{8}{subsubsection.4.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.4.3}Sensitivity to initial conditions}{8}{subsubsection.4.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5}Large movements with damping and excitation}{8}{subsection.4.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.5.1}Mechanical energy theorem}{8}{subsubsection.4.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.5.2}Sensitivity to initial conditions : a step towards chaos}{8}{subsubsection.4.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.5.3}mah man Poincaré maps}{8}{subsubsection.4.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.5.4}Strange attractors}{8}{subsubsection.4.5.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.6}To go further...}{8}{subsection.4.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}% 

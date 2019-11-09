@@ -40,11 +40,11 @@ private:
       if (L > 0.00000001) {
           double theta = acos(x/L);
           if (abs(sin(theta)-y/L) < 0.00001)   {
-              cout << "first way";
+              //cout << "first way";
               return theta+M_PI/2;
           }
           else if (abs(-sin(theta)-y/L) < 0.00001)  {
-              cout << "second way";
+              //cout << "second way";
               return -theta+M_PI/2;
           }
       }

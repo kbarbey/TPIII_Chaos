@@ -6,13 +6,29 @@
 % pour remplacer la valeur d'un parametre du fichier d'input
 % par la valeur scannee.
 %
+%% Parametres physiques pour le calcul analytique :
+tf       = 20.967955560204832;
+x0       = 1e-6;
+y0       = -4.37;
+vx0      = 0.0;
+vy0      = 0.0;
+m        = 1.5;
+q        = 1e-4;
+g        = 9.81;
+k        = 4.5;
+l0       = 1.1;
+Ex       = 0.0;
+Ey       = 0.0;
+w        = 0.0;
+nu       = 0.0;
+c        = 10.0;
 
 %% Parametres %%
 %%%%%%%%%%%%%%%%
 
 repertoire = ''; % Chemin d'acces au code compile (NB: enlever le ./ sous Windows)
 executable = 'Exercice3_2019.exe'; % Nom de l'executable (NB: ajouter .exe sous Windows)
-input = 'configuration_nom.in'; % Nom du fichier d'entree de base
+input = 'configuration.in'; % Nom du fichier d'entree de base
 
 nsimul = 11; % Nombre de simulations a faire entre w-Deltaw et w+Deltaw
 Deltaw=0.01; omega0=1.0 % A MODIFIER...

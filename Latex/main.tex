@@ -1,55 +1,52 @@
-\documentclass[a4paper, 11pt]{article}
-\usepackage[a4paper,top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{textcomp}
-\usepackage{gensymb}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{nicefrac} 
-\usepackage{amssymb}
-\usepackage{subfiles}
-\usepackage{emptypage}
-\usepackage{xspace}
-\usepackage{parskip}
-\usepackage{mathtools}
-\usepackage[table]{xcolor}
-\usepackage{graphicx}
-\graphicspath{{Images/}}
-\usepackage{float}
-\usepackage[figuresright]{rotating} %sidewaysfigure
-\usepackage{subcaption}
-\usepackage{pdfpages}
-\usepackage{wrapfig}
-\usepackage{caption}
-\usepackage{microtype}
-\usepackage{array}
-\usepackage{booktabs} 
-\usepackage{enumitem}
-\usepackage{multicol}
-
+\documentclass[11pt,titlepage]{article}
+\usepackage{Preamble}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
 \begin{document}
-\begin{titlepage}\centering
-\vspace*{\fill}
-\LARGE Système pendule-ressort \\
-\vspace*{3mm}
-\small Baptiste Claudon - Kent Barbey \\
-\vspace*{3mm}
-23 November 2019
-\vspace*{\fill}
+
+\begin{titlepage}
+    \newgeometry{margin=3cm}
+	\centering
+    %\includegraphics[width=0.5\linewidth]{epfl.png}\\[0.25cm] 	% University Logo
+    %\textsc{\LARGE École Polytechnique Fédérale de Lausanne}\\ \vspace{\fill}
+    \textbf{\textsc{\fontsize{50}{50}\selectfont Physique numérique I}}\\ \vspace{\fill}		
+	\textsc{\LARGE Spring-pendulum system}\\[0.4cm]
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	Baptiste Claudon  -  Kent Barbey\\[0.5cm]Assistant : André Calado Coroado\\[0.5cm]Group 15\\[0.5cm] \today
 \end{titlepage}
+
+\thispagestyle{numberonly}
+
+
+
+%%%%%%%%%%%%%%%%%%Table des matières et figures%%%%%%%%%%%%%%%%%%
 \newpage
+\renewcommand\contentsname{\color{black}Table of contents}
 \tableofcontents
+\vspace{0.5cm}
+\begin{invsummary}
+\end{invsummary}
 \newpage
 \listoffigures
+\vspace{0.5cm}
+\begin{invsummary}
+\end{invsummary}
 \newpage
-\input{1Intro.tex}
+%%%%%%%%%%%%%%%%%%%%%%Texte%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{1-Introduction}
 \newpage
-\input{2Calculsanalytiques.tex}
+\input{2-Calculsana}
 \newpage
-\input{3Cpp.tex}
+\input{3-CppImp}
 \newpage
-\input{4Sims.tex}
+\input{4-RandS}
 \newpage
-\input{5Conclusion.tex}
-\input{Annex.tex}
+\input{5-Conclusion}
+\newpage
+\input{appendix}
+%%%%%%%%%%%%%%%%%%%%Style de page%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{numberonly}
+%%%%%%%%%%%%%%%%%%%%%%%Bibliographie%%%%%%%%%%%%%%%%%%
+\printbibliography
+
 \end{document}
