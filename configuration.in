@@ -1,7 +1,7 @@
 % Parametres physiques :
 tFin     = 20.9680
-x0       = 1e-6
-y0       = -4.37
+x0       = 1.5
+y0       = 0.0
 vx0      = 0.0
 vy0      = 0.0
 m        = 1.5
@@ -11,9 +11,9 @@ k        = 4.5
 l0       = 1.1
 Ex       = 0.0
 Ey       = 0.0
-w        = 0.0
+w        = 0.5
 nu       = 0.0
-c        = 0.0
+c        = 10.0
 
 % Parametres numeriques :
 nsteps   = 500

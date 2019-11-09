@@ -23,7 +23,7 @@ xlabel('x [m]')
 ylabel('y [m]')
 
 figure
-plot(t,x,t,y,'linewidth',lw)
+plot(t,x,t,y,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscill par ex)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('x,y [m]')
