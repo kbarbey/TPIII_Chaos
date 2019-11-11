@@ -9,7 +9,7 @@
 %% Parametres %%
 %%%%%%%%%%%%%%%%
 
-repertoire = './'; % Chemin d'acces au code compile (NB: enlever le ./ sous Windows)
+repertoire = ''; % Chemin d'acces au code compile (NB: enlever le ./ sous Windows)
 executable = 'Exercice3_2019'; % Nom de l'executable (NB: ajouter .exe sous Windows)
 input = 'configuration.in'; % Nom du fichier d'entree de base
 
@@ -19,7 +19,8 @@ nsteps = round(logspace(2,5,nsimul));
 %w =  linspace(omega0-Deltaw,omega0+Deltaw,nsimul);  % frequence %round(logspace(2,4,nsimul)); % Nombre d'iterations entier de 10^2 a 10^4
 tFin = 20.967955560204832; % TODO: Verifier que la valeur de tfin est la meme que dans le fichier input
 dt = tFin ./ nsteps;
-%% Parametres physiques pour le calcul analytique :
+
+%% Parametres physiques pour le calcul analytique 
 x0       = 1.e-6;
 y0       = -4.37;
 vx0      = 0.0;
@@ -60,11 +61,8 @@ error = zeros(1,nsimul);
 for i = 1:nsimul % Parcours des resultats de toutes les simulations
     data = load(output{i}); % Chargement du fichier de sortie de la i-ieme simulation
     x=data(end,2);
-    x_th=x0*cos(w2*tfin);
+    x_th=x0*cos(w2*tFin);
     error(i)=abs(x_th-x);
-    %ekin = data(:,6);
-    %epot = data(:,7);
-    %maxE(i)=max(ekin+epot)-(ekin(1)+epot(1));
 end
 %% Fits
 p = polyfit(log(dt), log(error), 1);
@@ -76,6 +74,7 @@ legend(sprintf('y = %.3f * x^{%.2f}', kappa, tau))
 xlabel('\Deltat [s]')
 ylabel('Maximum de l''erreur sur x(t_{fin}) [m]')
 grid on
+
 
 %% Autre fit
 newdt=log(dt);
