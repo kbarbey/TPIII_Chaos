@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <cmath>
 #include <iomanip>
 #include "ConfigFile.tpp" // Fichier .tpp car inclut un template
@@ -10,30 +11,31 @@ using namespace std;
 class Exercice3{
 
 private:
-  double t,dt,tFin;
-  int nsteps;
-  double x,y,vx,vy;
-  double m,g,k,l0,q; 
-  double w,nu,c;  // frequence d'excitation; amortissement; couple (facultatif)
-  double Ex, Ey;  // champ electrique oscillatoire
-  double omega02=0.0; // pulsation
-  double gamma=0.0; //coefficient d'amortissement sur masse
-  int sampling;   // output tous les sampling pas de temps
-  int last;
-  ofstream *outputFile;
+    double t,dt,tFin;
+    int nsteps;
+    double x,y,vx,vy;
+    double m,g,k,l0,q;
+    double w,nu,c;  // frequence d'excitation; amortissement; couple (facultatif)
+    double Ex, Ey;  // champ electrique oscillatoire
+    double omega02=0.0; // pulsation
+    double gamma=0.0; //coefficient d'amortissement sur masse
+    int sampling;   // output tous les sampling pas de temps
+    int last;
+    string schema;
+    ofstream *outputFile;
 
-  void printOut(bool force){
-    if((!force && last>=sampling) || (force && last!=1)){
-      double ekin = 0.5*(vx*vx+vy*vy); // TODO: A completer
-      double epot = m*g*y+0.5*(computeL()-l0)*(computeL()-l0)-q*(Ex*x+Ey*y); // TODO: A completer
-      double Pnc = -nu*(vx*vx+vy*vy);  // TODO: A completer
-      *outputFile << t << " " << x << " " << y << " " << vx << " " << vy << " "
+    void printOut(bool force){
+        if((!force && last>=sampling) || (force && last!=1)){
+            double ekin = 0.5*(vx*vx+vy*vy); // TODO: A completer
+            double epot = m*g*y+0.5*(computeL()-l0)*(computeL()-l0)-q*(Ex*x+Ey*y); // TODO: A completer
+            double Pnc = -nu*(vx*vx+vy*vy);  // TODO: A completer
+            *outputFile << t << " " << x << " " << y << " " << vx << " " << vy << " "
                   << ekin << " " << epot << " " << Pnc << endl;
-      last=1;
-    }else{
-      last++;
-    }
-  };
+            last=1;
+        }else{
+            last++;
+        }
+    };
     
   double theta(double x,double y) {
       double L = computeL();
@@ -95,7 +97,7 @@ private:
         return e;
     }
   
-  void step()   { // TODO: programmer un pas du schema de Verlet
+  void step_SV()   { // TODO: programmer un pas du schema de Verlet
 	double tx(x),ty(y),tvx(vx),tvy(vy);
     x+=dt*tvx+0.5*dt*dt*ax(t,tx,ty);
     y+=dt*tvy+0.5*dt*dt*ay(t,tx,ty);
@@ -105,6 +107,13 @@ private:
     vx+=0.5*dt*(ax(t,tx,ty,t2vx,t2vy)+ax(t+dt,x,y,t2vx,t2vy));
     vy+=0.5*dt*(ay(t,tx,ty,t2vx,t2vy)+ay(t+dt,x,y,t2vx,t2vy));
   }
+    
+    void step_EC()  {
+        x += dt*vx;
+        y += dt*vy;
+        vx += dt*ax(t,x,y,vx,vy);
+        vy += dt*ay(t+dt,x,y,vx,vy);
+    }
   
   
 public:
@@ -120,6 +129,10 @@ public:
     for(int i(2); i<argc; ++i) // Input complementaires ("./Onde config_perso.in input_scan=[valeur]")
       configFile.process(argv[i]);
   
+    schema   = configFile.get<string>("schema");
+      if ((schema != "EC") and (schema != "SV"))  {
+          cout << "Schema inconnu. Rappel : SV ou EC. Par défault : SV" << endl;
+      }
     tFin     = configFile.get<double>("tFin");
     nsteps   = configFile.get<int>("nsteps");
     if  (nsteps > 0)    {
@@ -159,16 +172,24 @@ public:
     last = 0;
     t = 0;
     printOut(true);
-    while( t<(tFin-0.5*dt) ) {
-      step();
-      t += dt;
-      printOut(false);
-    }
+      if (schema == "EC")   {
+          while( t<(tFin-0.5*dt) ) {
+              step_EC();
+              t += dt;
+              printOut(false);
+          }
+      }
+      else {
+          while( t<(tFin-0.5*dt) ) {
+              step_SV();
+              t += dt;
+              printOut(false);
+          }
+      }
     printOut(true);
   };
-
+    
 };
-
  
 int main(int argc, char* argv[]) 
 {

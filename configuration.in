@@ -1,7 +1,7 @@
 % Parametres physiques :
 tFin     = 20.967955560204832
-x0       = 0.0
-y0       = -4.370006
+x0       = 1e-6
+y0       = -4.37
 vx0      = 0.0
 vy0      = 0.0
 m        = 1.5
@@ -15,7 +15,8 @@ w        = 0.0
 nu       = 0.0
 c        = 0.0
 
-% Parametres numeriques :
+% Parametres numeriques : (schema = SV pour Stormer Verlet, EC pour Euler Cromer)
+schema   = EC
 nsteps   = 500
 dt       = 0.041935911120410
 output   = Verlet.out

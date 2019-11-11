@@ -9,12 +9,12 @@
 %% Parametres %%
 %%%%%%%%%%%%%%%%
 
-repertoire = ''; % Chemin d'acces au code compile (NB: enlever le ./ sous Windows)
-executable = 'Exercice3_2019.exe'; % Nom de l'executable (NB: ajouter .exe sous Windows)
+repertoire = './'; % Chemin d'acces au code compile (NB: enlever le ./ sous Windows)
+executable = 'Exercice3_2019'; % Nom de l'executable (NB: ajouter .exe sous Windows)
 input = 'configuration.in'; % Nom du fichier d'entree de base
 
 nsimul = 10; % Nombre de simulations a faire entre w-Deltaw et w+Deltaw
-nsteps = round(logspace(1,3,nsimul));
+nsteps = round(logspace(2,5,nsimul));
 %Deltaw=0.01; omega0=1.0 % A MODIFIER...
 %w =  linspace(omega0-Deltaw,omega0+Deltaw,nsimul);  % frequence %round(logspace(2,4,nsimul)); % Nombre d'iterations entier de 10^2 a 10^4
 tFin = 20.967955560204832; % TODO: Verifier que la valeur de tfin est la meme que dans le fichier input
@@ -81,7 +81,7 @@ grid on
 %% Autre fit
 newdt=log(dt);
 newerr=log(error);
-%% Partie data selection(si pour dt>>, valeurs qui péjorent le fit) :
+%% Partie data selection(si pour dt>>, valeurs qui pï¿½jorent le fit) :
 DT=ones(7,1);
 ERROR=ones(7,1);
 for i = 1:length(DT)
