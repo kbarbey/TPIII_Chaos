@@ -27,20 +27,22 @@ plot(t,x,t,y,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscil
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('x,y [m]')
-legend('x','y','Analytic solution')
+legend('x','y')
 %% Vitesses
 figure
 plot(t,vx,t,vy, 'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('v_x,v_y [m/s]')
-legend('vx','vy','Analytical solution')
+legend('vx','vy')
 
 figure
 plot(t,ekin+epot -ekin(1)-epot(1), 'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('\Delta E [J]')
+
+
 
 % figure % spectre de Fourier 
 % tfin=t(end);

@@ -1,7 +1,7 @@
 % Parametres physiques :
-tFin     = 20.967955560204832
-x0       = 0.0
-y0       = -4.370006
+tFin     = 1000
+x0       = 0
+y0       = -4.37
 vx0      = 0.0
 vy0      = 0.0
 m        = 1.5
@@ -10,13 +10,13 @@ g        = 9.81
 k        = 4.5
 l0       = 1.1
 Ex       = 0.0
-Ey       = 0.0
-w        = 0.0
+Ey       = 1.0
+w        = 1.732050807568877
 nu       = 0.0
 c        = 0.0
 
 % Parametres numeriques :
-nsteps   = 500
+nsteps   = 100
 dt       = 0.041935911120410
 output   = Verlet.out
 sampling = 1
