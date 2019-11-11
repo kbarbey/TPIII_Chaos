@@ -39,13 +39,13 @@ private:
     
   double theta(double x,double y) {
       double L = computeL();
-      if (L > 0.00000001) {
+      if (L > 0.00000000000001) {
           double theta = acos(x/L);
-          if (abs(sin(theta)-y/L) < 0.00001)   {
+          if (abs(sin(theta)-y/L) < 0.0001)   {
               //cout << "first way";
               return theta+M_PI/2;
           }
-          else if (abs(-sin(theta)-y/L) < 0.00001)  {
+          else if (abs(-sin(theta)-y/L) < 0.0001)  {
               //cout << "second way";
               return -theta+M_PI/2;
           }
