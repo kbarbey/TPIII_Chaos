@@ -20,7 +20,6 @@ nsteps = round(logspace(2,5,nsimul));
 tFin = 20.967955560204832; % TODO: Verifier que la valeur de tfin est la meme que dans le fichier input
 dt = tFin ./ nsteps;
 %% Parametres physiques pour le calcul analytique :
-w2       =sqrt((k*g)/(g*m+k*l0));
 x0       = 1.e-6;
 y0       = -4.37;
 vx0      = 0.0;
@@ -35,7 +34,7 @@ Ey       = 0.0;
 w        = 0.0;
 nu       = 0.0;
 c        = 0.0;
-
+w2       =sqrt((k*g)/(g*m+k*l0));
 
 
 paramstr = 'nsteps'; % Nom du parametre a scanner
