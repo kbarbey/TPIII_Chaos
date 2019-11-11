@@ -1,5 +1,5 @@
-%system('g++ -o Exercice3_2019.cpp')
-%system('./configuration.in')
+%system('g++ -o Exercice3 Exercice3_2019.cpp')
+%system('Exercice3 configuration.in')
 
 output = load('Verlet.out');
 
@@ -23,7 +23,7 @@ xlabel('x [m]')
 ylabel('y [m]')
 %% Position en fonction du temps
 figure
-plot(t,x,t,y,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscill par ex)
+plot(t,x,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscill par ex)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
 ylabel('x,y [m]')
