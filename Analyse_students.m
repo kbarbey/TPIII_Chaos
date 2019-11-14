@@ -1,5 +1,5 @@
-%system('g++ -o Exercice3 Exercice3_2019.cpp')
-%system('Exercice3 configuration.in')
+system('g++ -o Exercice3 Exercice3_2019.cpp')
+system('./Exercice3 configuration.in')
 
 output = load('Verlet.out');
 
@@ -14,22 +14,32 @@ Pnc = output(:,8);
 
 clear output
 
-fs=16; lw=1;
+fs=18; lw=1;
 figure
+set(gcf,'Color','w')
 plot(x,y,'-', 'linewidth',lw)
 set(gca,'fontsize',fs)
-axis equal
+%axis equal
 xlabel('x [m]')
 ylabel('y [m]')
 %% Position en fonction du temps
 figure
+set(gcf,'Color','w')
+x0 = 1e-6;
+w2 = 1.498282769900674;
+y0 = -4.369999;
+yeq = -4.37;
+w1 = 1.860521018838127;
+X = x0*cos(w2*t); % Analytique
+Y = (y0-yeq)*cos(w1*t) + yeq;
 plot(t,x,'linewidth',lw) % peut rajouter y(t) ou enlever (pour petites oscill par ex)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
-ylabel('x,y [m]')
-legend('x','y')
+ylabel('x [m]')
+legend('x','(y_0-y_{eq})cos(\omega_1t)+y_{eq}')
 %% Vitesses
 figure
+set(gcf,'Color','w')
 plot(t,vx,t,vy, 'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
@@ -37,6 +47,7 @@ ylabel('v_x,v_y [m/s]')
 legend('vx','vy')
 
 figure
+set(gcf,'Color','w')
 plot(t,ekin+epot -ekin(1)-epot(1), 'linewidth',lw)
 set(gca,'fontsize',fs)
 xlabel('t [s]')
